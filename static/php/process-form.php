@@ -6,7 +6,7 @@ if (isset($_POST['submit'])) {
     $mailFrom = $_POST['email'];
     $message = $_POST['message'];      
     // Set your email address where you want to receive emails. 
-    $mailto = 'pedidos@unalukaflash.com';
+    $mailto = "pedidos@unalukaflash.com";
     $headers = "From: ".$name." <".$mailFrom."> \r\n";
     $txt = "Recibiste un email de".$name.".\n\n".$message; 
       
