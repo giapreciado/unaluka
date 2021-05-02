@@ -1,19 +1,18 @@
 <?php
-if (isset($_REQUEST['name'],$_REQUEST['email'])) {
+if (isset($_POST['submit'])) {
       
-    $name = $_REQUEST['name'];
-    $email = $_REQUEST['email'];
-    $message = $_REQUEST['message'];
-      
-    // Set your email address where you want to receive emails. 
-    $to = 'pedidos@unalukaflash.com';
-      
+    $name = $_POST['name'];
     $subject = 'Pregunta por formulario de la web';
-    $headers = "From: ".$name." <".$email."> \r\n";
+    $mailFrom = $_POST['email'];
+    $message = $_POST['message'];      
+    // Set your email address where you want to receive emails. 
+    $mailto = 'pedidos@unalukaflash.com';
+    $headers = "From: ".$name." <".$mailFrom."> \r\n";
+    $txt = "Recibiste un email de".$name.".\n\n".$message; 
       
-    $send_email = mail($to,$subject,$message,$headers);
+    mail($mailto,$subject,$message,$headers);
       
-    echo ($send_email) ? 'success' : 'error';
+    header("Location: index.html?mailsend");
       
 }
 ?>
